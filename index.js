@@ -23,12 +23,8 @@ function glob(filepath, inherited) {
     if (data.image !== undefined) data.image = data.image.replace(/\\/g, "/");
     
     var imagepathMP4 = path.join(filepath, "video.mp4");
-    var imagepathAVI = path.join(filepath, "video.avi");
-    var imagepathMKV = path.join(filepath, "video.mkv");
     data.video = fs.existsSync(imagepathMP4)
         ? imagepathMP4.substring(imagepathMP4.indexOf("tvpi") + 4)
-        : fs.existsSync(imagepathAVI)
-        ? imagepathAVI.substring(imagepathAVI.indexOf("tvpi") + 4)
         : undefined;
     if (data.video !== undefined) data.video = data.video.replace(/\\/g, "/");
     
