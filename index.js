@@ -160,6 +160,7 @@ remote.get("/command", function(req, res) {
         }
         case "back": {
             settings.time -= 10;
+            if (settings.time < 0) settings.time = 0;
             break;
         }
         case "start": {
