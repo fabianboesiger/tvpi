@@ -10,17 +10,15 @@ window.addEventListener("load", function() {
         request("/recieve", {}, function(settings) {
             if(id !== settings.id) {
                 id = settings.id;
-                if (video.paused !== settings.paused) {
-                    if (settings.paused) {
-                        video.pause();
-                    } else {
-                        video.play();
-                    }
-                }
                 if (!video.src.includes(settings.src)) {
                     video.src = settings.src;
                 }
                 video.currentTime = settings.time;
+                if (settings.paused === true) {
+                    video.pause();
+                } else {
+                    video.play();
+                }
                 video.volume = settings.volume;
             }
 
@@ -28,10 +26,11 @@ window.addEventListener("load", function() {
             // report back
             request("/report", {
                 time: video.currentTime,
+                duration: video.duration,
                 ended: video.ended
             }, function() {});
         });
-    }, 200);
+    }, 500);
 });
 
 function request(url, send, recieve) {

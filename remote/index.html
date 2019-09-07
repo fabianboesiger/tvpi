@@ -2,40 +2,45 @@
 <html>
     <head>
         <title>TVPI Remote</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="script.js"></script>
     </head>
     <body>
         <div id="background"></div>
-        <h1>2001: Odyssee im Weltraum</h1>
-        <h2>Informationen</h2>
         <div>
-            <table>
-                <tr><th>Sprache</th><td>Deutsch</td></tr>
-                <tr><th>Erscheinungsjahr</th><td>1968</td></tr>
-                <tr><th>Produktionsland</th><td>Vereinigtes Königreich</td></tr>
-                <tr><th>Genre</th><td>Science Fiction</td></tr>
-                <tr><th>Regie</th><td>Stanley Kubrick</td></tr>
-            </table>
+            <div id="nav-buttons">
+                <button id="nav-back" class="inline"><img src="/icons/power-off-solid.svg"></button>
+                <div id="header">
+                    <h1 id="title"></h1>
+                    <i id="genre"></i>
+                    <i id="type"></i>                    
+                </div>
+                <button id="nav-play" class="inline"><img src="/icons/play-circle-solid.svg"></button>
+            </div>
+            
         </div>
-        <h2>Inhalt</h2>
-        <div>
-            Der Film beginnt mit einer dreiminütigen Musiksequenz aus György Ligetis Atmosphères zu völlig schwarzem Bild, die bei Fernsehausstrahlungen meist ausgespart wird. Das Erste, was der Zuschauer zu sehen bekommt, ist das Logo der Produktionsfirma Metro-Goldwyn-Mayer. In der darauf folgenden Szene befinden sich Mond, Erde und Sonne in Konjunktion. Die Sonne geht auf, und der Vorspann wird eingeblendet. Die Szene wird von der Introduktion aus Also sprach Zarathustra von Richard Strauss untermalt. Der Rest des Filmes kann in vier Akte geteilt werden, jeder Akt (mit Ausnahme des zweiten) wird zuvor mit einem Zwischentitel angekündigt.
-        </div>
-        <h2>Kontrolle</h2>
-        <div>
+        <div id="controls-holder">
+            <p id="currently-playing"></p>
+            <p>
+                <span id="time"></span>
+                <span> / </span>
+                <span id="duration"></span>
+            </p>
             <div id="controls">
                 <button onclick="send('start')"><img src="/icons/fast-backward-solid.svg"></button>
                 <button onclick="send('back')"><img src="/icons/step-backward-solid.svg"></button>
-                <button onclick="send('play')"><img src="/icons/play-solid.svg"></button>
+                <button onclick="send('play')"><img id="play-button" src="/icons/play-solid.svg"></button>
                 <button onclick="send('advance')"><img src="/icons/step-forward-solid.svg"></button>
                 <button onclick="send('end')"><img src="/icons/fast-forward-solid.svg"></button>
             </div>
-            <br>
-            <input type="range" min="0" max="1" value="1" step="any" onchange="volume(this.value)">
+            <div>
+                <input type="range" min="0" max="1" value="1" step="any" onchange="volume(this.value)">
+            </div>
         </div>
-        <h2>Als Nächstens</h2>
-        <div>
+        <div id="list">
         </div>
     </body>
 </html>
